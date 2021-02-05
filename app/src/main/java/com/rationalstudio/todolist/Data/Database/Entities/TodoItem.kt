@@ -1,4 +1,4 @@
-package com.rationalstudio.todolist
+package com.rationalstudio.todolist.Data.Database.Entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -1,8 +1,8 @@
-package com.rationalstudio.todolist
+package com.rationalstudio.todolist.Data.Database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.rationalstudio.todolist.TodoItem
+import com.rationalstudio.todolist.Data.Database.Entities.TodoItem
 
 
 @Dao

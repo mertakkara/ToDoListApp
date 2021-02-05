@@ -1,14 +1,15 @@
-package com.rationalstudio.todolist
+package com.rationalstudio.todolist.Data.Database
 
 import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.rationalstudio.todolist.TodoItem
+import com.rationalstudio.todolist.Data.Database.Entities.TodoItem
+import androidx.room.Room
+
 
 @Database(
     entities = [TodoItem::class],
-    version = 1
+    version = 2
 )
 
 abstract class TodoDatabase: RoomDatabase() {
