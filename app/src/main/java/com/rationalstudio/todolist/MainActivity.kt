@@ -6,7 +6,7 @@ import com.rationalstudio.todolist.ui.todolist.ToDoViewModelFactory
 import com.rationalstudio.todolist.ui.todolist.TodoViewModel
 import com.rationalstudio.todolist.Data.Repositories.ToDoRepository
 import com.rationalstudio.todolist.Data.Database.TodoDatabase
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.rationalstudio.todolist.R
 import androidx.lifecycle.Observer
 import com.rationalstudio.todolist.Other.TodoItemAdapter
@@ -15,15 +15,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.rationalstudio.todolist.ui.todolist.AddDialogListener
 import com.rationalstudio.todolist.ui.todolist.AddTodoItemDialog
 import com.rationalstudio.todolist.Data.Database.Entities.TodoItem
+import org.kodein.di.KodeinAware
+import org.kodein.di.generic.instance
+import org.kodein.di.android.kodein
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), KodeinAware {
+    override val kodein by kodein()
+    private val factory: ToDoViewModelFactory by instance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val database=TodoDatabase(this)
-        val repository = ToDoRepository(database)
-        val factory= ToDoViewModelFactory(repository)
-        val viewModel = ViewModelProviders.of(this,factory).get(TodoViewModel::class.java)
+
+        val viewModel = ViewModelProvider(this,factory).get(TodoViewModel::class.java)
         val adapter = TodoItemAdapter(listOf(), viewModel)
 
         rvTodoItems.layoutManager = LinearLayoutManager(this)
