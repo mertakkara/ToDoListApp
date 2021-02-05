@@ -10,7 +10,7 @@ class TodoViewModel(
     private val repository: ToDoRepository
 ) : ViewModel() {
 
-    fun upsert(item: TodoItem) =
+    fun insert(item: TodoItem) =
         GlobalScope.launch {
             repository.insert(item)
         }
