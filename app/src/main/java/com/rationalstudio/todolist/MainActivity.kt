@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         val repository = ToDoRepository(database)
         val factory= ToDoViewModelFactory(repository)
         val viewModel = ViewModelProviders.of(this,factory).get(TodoViewModel::class.java)
+        //sa
 
     }
 }
